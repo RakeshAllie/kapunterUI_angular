@@ -1,55 +1,67 @@
 
-<div class="dashboard-content">
-    <div class="row" style="padding-bottom:50px;">
-
-        <div class="Wallet-Component-Main-Container">
-            <div class="Wallet-Dep-Wal-With-Container">
-              <div class="Wallet-Dep-Comp" *ngIf="(authservice.isLoggenIn | async) && this.authservice.isbenview()" (click)="DepositeToWallet()">
-                <span>DEPOSIT</span>
-                <img style="width: 30px; height: 41.89px" src="../../assets/arrow-up.svg" alt="Up Arrow"/>
-              </div>
-              <div class="Wallet-Dep-Comp" *ngIf="!(authservice.isLoggenIn | async) || this.authservice.isadminview()" (click)="ActionToastr()">
-                <span>DEPOSIT</span>
-                <img style="width: 30px; height: 41.89px" src="../../assets/arrow-up.svg" alt="Up Arrow"/>
-              </div>
-              <div class="Wallet-Bal-Comp">
-                <img style="height: 67.74px;border-radius: 15px 15px 0px 0px;margin-top: -5px; width: 100%" src="../../assets/kapunter.ico" alt="Logo"/>
-                <div style="display:flex; flex-direction:column; align-items:center">
-                  <p style="margin:0px; font-Size:10.5px; font-Weight:300">WALLET BALANCE</p>
-                  <div style="display:flex; align-Items:flex-end; justify-Content:center">
-                  <img style="width: 18px; height: 18.8px; margin: 6px 5px 0 0;" src="../../assets/coins-icon.png" alt="Coins Icon"/>
-                  <p style="font-Size:15px; margin:0">{{this.authservice.userdetail.coins}}</p>
-                  </div>
-                </div>
-              </div>
-              <div class="Wallet-With-Comp" *ngIf="(authservice.isLoggenIn | async) && this.authservice.isbenview()" (click)="WithdrawFromWallet()">
-                <span>WITHDRAW</span>
-                <img style="width: 30px; height: 41.89px" src="../../assets/arrow-down.svg" alt="Down Arrow"/>
-              </div>
-              <div class="Wallet-With-Comp" *ngIf="!(authservice.isLoggenIn | async) || this.authservice.isadminview()" (click)="ActionToastr()">
-                <span>WITHDRAW</span>
-                <img style="width: 30px; height: 41.89px" src="../../assets/arrow-down.svg" alt="Down Arrow"/>
-              </div>
-            </div>
-          </div>
-
-        <div id="DashboardImageSlides" class="carousel slide" data-bs-ride="carousel">
-            <div class="carousel-inner">
-                <div class="carousel-item active" data-bs-interval="10000" *ngFor="let image of images">
-                    <img src="{{imgPath}}{{image.documentDetailId}}.{{image.fileExtenstion}}" class="d-block w-100" alt="">
-                </div>
-                <!-- <div class="carousel-item" data-bs-interval="10000">
-                  <img src="../../assets/DashboardImages/0f5c6b92-1ac9-42fe-9fc2-d50f230a13e9.jpg" class="d-block w-100" alt="">
-              </div> -->
-            </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#DashboardImageSlides" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#DashboardImageSlides" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-            </button>
-        </div>
+<div class="dashboard-content home-dashboard">
+  <div class="home-hero-card">
+    <div class="hero-brand">
+      <img src="../../assets/kapunter-logo.jpeg" alt="Kapunter logo" />
     </div>
+    <h1>Kapunter 5-in-1 Wallet</h1>
+    <p class="hero-caption">Fast • Secure • Easy</p>
+
+    <div class="hero-actions">
+      <button class="hero-btn hero-btn-primary" type="button" (click)="DepositeToWallet()">Get Started</button>
+      <button class="hero-btn hero-btn-secondary" type="button" (click)="ActionToastr()">Login</button>
+    </div>
+
+    <div class="wallet-balance-tile">
+      <p class="wallet-balance-label">Balance</p>
+      <h2><i class="bi bi-currency-rupee"></i> {{ this.authservice.userdetail.coins || 0 }}</h2>
+    </div>
+  </div>
+
+  <div class="Wallet-Component-Main-Container">
+    <div class="Wallet-Dep-Wal-With-Container">
+      <div class="Wallet-Dep-Comp" *ngIf="(authservice.isLoggenIn | async) && this.authservice.isbenview()" (click)="DepositeToWallet()">
+        <span>DEPOSIT</span>
+        <img src="../../assets/arrow-up.svg" alt="Up Arrow" />
+      </div>
+      <div class="Wallet-Dep-Comp" *ngIf="!(authservice.isLoggenIn | async) || this.authservice.isadminview()" (click)="ActionToastr()">
+        <span>DEPOSIT</span>
+        <img src="../../assets/arrow-up.svg" alt="Up Arrow" />
+      </div>
+      <div class="Wallet-Bal-Comp">
+        <img src="../../assets/kapunter-logo.jpeg" alt="Logo" />
+        <div class="wallet-bal-content">
+          <p>WALLET BALANCE</p>
+          <div class="wallet-bal-value">
+            <img src="../../assets/coins-icon.png" alt="Coins Icon" />
+            <p>{{ this.authservice.userdetail.coins }}</p>
+          </div>
+        </div>
+      </div>
+      <div class="Wallet-With-Comp" *ngIf="(authservice.isLoggenIn | async) && this.authservice.isbenview()" (click)="WithdrawFromWallet()">
+        <span>WITHDRAW</span>
+        <img src="../../assets/arrow-down.svg" alt="Down Arrow" />
+      </div>
+      <div class="Wallet-With-Comp" *ngIf="!(authservice.isLoggenIn | async) || this.authservice.isadminview()" (click)="ActionToastr()">
+        <span>WITHDRAW</span>
+        <img src="../../assets/arrow-down.svg" alt="Down Arrow" />
+      </div>
+    </div>
+  </div>
+
+  <div id="DashboardImageSlides" class="carousel slide home-carousel" data-bs-ride="carousel" *ngIf="images.length > 0">
+    <div class="carousel-inner">
+      <div class="carousel-item" [ngClass]="{ active: i === 0 }" data-bs-interval="10000" *ngFor="let image of images; let i = index">
+        <img src="{{ imgPath }}{{ image.documentDetailId }}.{{ image.fileExtenstion }}" class="d-block w-100" alt="">
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#DashboardImageSlides" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#DashboardImageSlides" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
 </div>

@@ -1,0 +1,75 @@
+.navbar-shell {
+  background: rgba(8, 8, 12, 0.9);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(255, 141, 33, 0.35);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+  min-height: 64px;
+}
+
+.navbar-shell .row {
+  align-items: center;
+}
+
+.menu-toggle {
+  margin-left: -8px;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 149, 31, 0.62);
+  box-shadow: 0 0 12px rgba(255, 149, 31, 0.3);
+}
+
+.menu-toggle i {
+  font-size: 1.35rem;
+}
+
+.brand-title {
+  color: #ffba70;
+  font-size: clamp(1.35rem, 2.6vw, 2rem);
+  font-style: italic;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  text-shadow: 0 0 14px rgba(255, 140, 0, 0.4);
+  margin: 0;
+}
+
+.nav-pill-btn {
+  border-radius: 999px;
+  border: 1px solid rgba(255, 149, 31, 0.6);
+  min-width: 118px;
+}
+
+.top-auth-actions {
+  margin-right: 0;
+  justify-content: flex-end;
+  gap: 0.45rem;
+}
+
+.mobile-auth-actions {
+  display: none;
+}
+
+.nav-pill-btn-sm {
+  border-radius: 999px;
+  padding: 0.3rem 0.8rem;
+  font-size: 0.72rem;
+  border: 1px solid rgba(255, 149, 31, 0.6);
+}
+
+@media (max-width: 992px) {
+  .brand-title {
+    font-size: 1.2rem;
+    margin-top: 6px;
+  }
+
+  .top-auth-actions {
+    display: none !important;
+  }
+
+  .mobile-auth-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: -6px;
+    margin-right: 2px;
+  }
+}

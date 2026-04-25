@@ -4,7 +4,7 @@ export const environment = {
     environment: 'dev',
     isAdminSite: false,
     appUrl: 'https://www.kapunter.com/',
-    apiUrl: 'https://rcapplications.online',
+    apiUrl: 'https://localhost:7236',
     ueserKey: 'kapunterUser',
 
     imagePath:{

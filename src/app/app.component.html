@@ -4,17 +4,16 @@
     <main role="main" class="pb-3">
         <div class="main">
             <div>
-                <div class="dashboard-nav sitebackground" style="margin-top: 3%;">
+                <div class="dashboard-nav sitebackground sidebar-shell">
 
-                    <div class="Burger-Menu-header-container">
+                    <div class="Burger-Menu-header-container sidebar-profile-card">
                         <a href="#">
-                            <img src="../assets/kapunter.ico" alt="Logo Punter"/>
+                            <img src="../assets/kapunter-logo.jpeg" alt="Logo Punter"/>
                         </a>
-                        {{this.authService.userdetail.userNumber}}
-                        <!-- <div class="small-br"></div> -->
+                        <div class="sidebar-user-number">{{this.authService.userdetail.userNumber}}</div>
                         <div class="big-br"></div>
-                        <div>Wallet Balance</div>
-                        <div style="font-weight: 1.1rem;color: #7e1fac;">{{this.authService.userdetail.coins}}</div>
+                        <div class="sidebar-wallet-label">Wallet Balance</div>
+                        <div class="sidebar-wallet-value">{{this.authService.userdetail.coins}}</div>
           
                         <button class="Burger-Menu-Close-btn">
                           <svg
@@ -115,8 +114,8 @@
                                 <i class="bi bi-telegram"></i>
                             </span>
                         </div>
-                        <span class="dashboard-nav-item "><i class="bi bi-file-earmark-text-fill"></i> Terms </span>
-                        <span class="dashboard-nav-item "><i class="bi bi-tag-fill"></i> Offers </span>
+                        <span routerLink="/setting/setting-lists" class="dashboard-nav-item "><i class="bi bi-file-earmark-text-fill"></i> Terms </span>
+                        <span routerLink="/setting/setting-lists" class="dashboard-nav-item "><i class="bi bi-tag-fill"></i> Offers </span>
                         <span routerLink="/notification/list-notification" class="dashboard-nav-item "><i class="bi bi-bell-fill"></i> Notifications </span>
                     </nav>
 
@@ -125,9 +124,9 @@
                         <span routerLink="/account/profile-details" class="dashboard-nav-item "><i class="bi bi-person"></i> Profile </span>
                         <span routerLink="/bankAccount/list-user-bank-account" class="dashboard-nav-item "><i class="bi bi-bank2"></i> Withdraw Details </span>
                         <span routerLink="/site/user-list-sites" class="dashboard-nav-item"><i class="bi bi-plus-circle-fill"></i> Create Id </span>
-                        <span class="dashboard-nav-item"><i class="bi bi-star-fill"></i> Bonus </span>
-                        <span class="dashboard-nav-item"><i class="bi bi-fast-forward-fill"></i> Loss Back </span>
-                        <span class="dashboard-nav-item"><i class="bi bi-file-pdf-fill"></i> Rules </span>
+                        <span routerLink="/setting/setting-lists" class="dashboard-nav-item"><i class="bi bi-star-fill"></i> Bonus </span>
+                        <span routerLink="/setting/setting-lists" class="dashboard-nav-item"><i class="bi bi-fast-forward-fill"></i> Loss Back </span>
+                        <span routerLink="/setting/setting-lists" class="dashboard-nav-item"><i class="bi bi-file-pdf-fill"></i> Rules </span>
 
                         <div class="nav-item-divider"></div>
 
@@ -142,8 +141,8 @@
                             </span>
                         </div>
 
-                        <span class="dashboard-nav-item "><i class="bi bi-file-earmark-text-fill"></i> Terms </span>
-                        <span class="dashboard-nav-item "><i class="bi bi-tag-fill"></i> Offers </span>
+                        <span routerLink="/setting/setting-lists" class="dashboard-nav-item "><i class="bi bi-file-earmark-text-fill"></i> Terms </span>
+                        <span routerLink="/setting/setting-lists" class="dashboard-nav-item "><i class="bi bi-tag-fill"></i> Offers </span>
                         <span routerLink="notification/list-notification" class="dashboard-nav-item "><i class="bi bi-bell-fill"></i> Notifications </span>
                     </nav>
 

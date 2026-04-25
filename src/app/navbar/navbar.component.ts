@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AccountsService } from '../Accounts/accounts.service';
 import { AuthService } from '../auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -9,11 +10,15 @@ import { AuthService } from '../auth.service';
 })
 export class NavbarComponent {
 
-  constructor(private accountService: AccountsService, public authservice: AuthService){
+  constructor(private accountService: AccountsService, public authservice: AuthService, private router: Router){
     console.log('asad'+authservice.isLoggenIn);
   }
 
   loginPopup() {
       this.accountService.OpenLoginPopup(true, 'Login');
+  }
+
+  goToMyAccount() {
+    this.router.navigate(['/account/profile-details']);
   }
 }

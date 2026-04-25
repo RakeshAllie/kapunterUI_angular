@@ -4,3 +4,23 @@
     box-shadow: #242223;
     box-shadow: 0px 2px 4px 1px rgba(0, 0, 0, 0.632);
 }
+
+.listing-card {
+    border-radius: 16px;
+    border: 1px solid rgba(255, 141, 33, 0.35);
+    background: linear-gradient(145deg, rgba(25, 21, 32, 0.95), rgba(12, 10, 18, 0.95));
+}
+
+.action-orange {
+    background: linear-gradient(120deg, #ff9100, #ff6200);
+    border-color: rgba(255, 184, 123, 0.45);
+    color: #fff;
+    font-weight: 700;
+}
+
+.action-red {
+    background: linear-gradient(120deg, #dc3545, #a71d2a);
+    border-color: rgba(255, 185, 185, 0.25);
+    color: #fff;
+    font-weight: 700;
+}

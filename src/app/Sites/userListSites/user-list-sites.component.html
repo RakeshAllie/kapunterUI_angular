@@ -1,25 +1,26 @@
-<div class="card rounded-3 siteColor" style="margin: 0.5rem;" *ngFor="let site of sites">
-    <div class="card-body">
-        <div class="row Col-12">
-            <div class="col-9">
-                <div class="row col-12">
-                    <div class="col-3 text-center">
-                        <img class="siteImageSize rounded-circle"  src="{{sitePath}}{{site.documentDetailId}}.{{site.fileExtenstion}}" />
-                    </div>
-                    <div class="col-9 align-self-center">
-                        <p class="text-uppercase">{{ site.siteName }}</p>
-                        <p class="siteURL">{{ site.siteURL }}</p>
-                    </div>
-                </div>
+<section class="list-page-shell">
+  <div class="list-page-header">
+    <h2>Available Sites</h2>
+    <p>Create your IDs quickly from active trusted sites</p>
+  </div>
 
-            </div>
-
-            <div class="col-3 d-grid gap-2 mx-auto" style="padding:0px">
-                <div class="col-12 row text-center">
-                    <button class="rounded-3 btn-primary text-nowrap btn-sm col-6" (click)="CreateIDRequest(site)" type="button">Create ID</button>
-                </div>
-            </div> 
-
-        </div>
+  <div class="site-list-card" *ngFor="let site of sites">
+    <div class="site-list-left">
+      <div class="site-logo-wrap">
+        <img class="siteImageSize rounded-circle" src="{{sitePath}}{{site.documentDetailId}}.{{site.fileExtenstion}}" alt="{{ site.siteName }}" />
+      </div>
+      <div class="site-meta">
+        <h4 class="text-uppercase">{{ site.siteName }}</h4>
+        <p class="siteURL">{{ site.siteURL }}</p>
+        <span class="site-state"><i class="bi bi-circle-fill"></i> Active</span>
+      </div>
     </div>
-</div>
+
+    <div class="site-list-actions">
+      <button class="btn action-btn action-btn-create" (click)="CreateIDRequest(site)" type="button">Create ID</button>
+      <button class="btn action-btn action-btn-deposit" (click)="CreateIDRequest(site)" type="button">Deposit</button>
+      <button class="btn action-btn action-btn-withdraw" (click)="CreateIDRequest(site)" type="button">Withdraw</button>
+      <button class="btn action-btn action-btn-transfer" (click)="CreateIDRequest(site)" type="button">Transfer</button>
+    </div>
+  </div>
+</section>
