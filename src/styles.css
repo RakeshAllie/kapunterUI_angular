@@ -1116,14 +1116,24 @@ p, input, label, .viewotp, .viewPassword {
     padding-bottom: 6rem;
 }
 
+.home-layout-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
 .home-hero-card {
     margin: 0.75rem auto 1.2rem;
-    width: min(100%, 640px);
+    width: min(100%, 700px);
     background: radial-gradient(circle at 85% 15%, rgba(255, 115, 0, 0.2), rgba(0, 0, 0, 0.7) 58%);
     border: 1px solid rgba(255, 133, 20, 0.35);
     border-radius: 28px;
     box-shadow: 0 0 24px rgba(255, 117, 0, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.1);
-    padding: 1.5rem 1.2rem;
+    padding: 1.35rem 1.2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
 }
 
 .hero-brand {
@@ -1158,6 +1168,7 @@ p, input, label, .viewotp, .viewPassword {
     display: flex;
     gap: 0.8rem;
     flex-wrap: wrap;
+    justify-content: center;
 }
 
 .hero-btn {
@@ -1375,4 +1386,38 @@ p, input, label, .viewotp, .viewPassword {
     .detail-grid {
         grid-template-columns: 1fr;
     }
+}
+
+/* Typography normalization */
+html, body {
+    font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: "Segoe UI", "Trebuchet MS", Arial, sans-serif;
+    letter-spacing: 0.01em;
+    line-height: 1.25;
+    margin-bottom: 0.45rem;
+    color: #fff0de;
+}
+
+h1 { font-size: clamp(1.7rem, 3.4vw, 2.4rem); font-weight: 800; }
+h2 { font-size: clamp(1.35rem, 2.8vw, 1.95rem); font-weight: 750; }
+h3 { font-size: clamp(1.15rem, 2.4vw, 1.55rem); font-weight: 700; }
+h4 { font-size: clamp(1rem, 2.1vw, 1.25rem); font-weight: 650; }
+h5 { font-size: 1rem; font-weight: 650; }
+h6 { font-size: 0.92rem; font-weight: 650; }
+
+p, li, label, input, textarea, select, button, .viewotp, .viewPassword {
+    font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-size: clamp(0.8rem, 1.5vw, 0.94rem);
+    line-height: 1.42;
+}
+
+.dashboard-nav-item,
+.dashboard-nav-dropdown-item {
+    font-size: 0.84rem;
+    font-weight: 600;
 }

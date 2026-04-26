@@ -12,9 +12,10 @@
                         </a>
                         <div class="sidebar-user-number">{{this.authService.userdetail.userNumber}}</div>
                         <div class="big-br"></div>
-                        <div class="sidebar-wallet-label">Wallet Balance</div>
-                        <div class="sidebar-wallet-value">{{this.authService.userdetail.coins}}</div>
-          
+                        <div class="wallet-balance-tile">
+      <p class="wallet-balance-label">Balance</p>
+      <h2><i class="bi bi-currency-rupee"></i> {{ this.authService.userdetail.coins || 0 }}</h2>
+    </div> 
                         <button class="Burger-Menu-Close-btn">
                           <svg
                             style="font-weight: bolder; margin: 0 0 0 -4px;"

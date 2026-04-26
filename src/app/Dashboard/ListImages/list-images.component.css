@@ -1,0 +1,49 @@
+.section-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.7rem;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.image-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.7rem;
+}
+
+.image-item {
+  border: 1px solid rgba(255, 149, 31, 0.25);
+  border-radius: 14px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.image-preview {
+  height: 130px;
+  background: linear-gradient(145deg, rgba(33, 26, 46, 0.9), rgba(16, 13, 24, 0.9));
+}
+
+.image-meta {
+  padding: 0.65rem;
+}
+
+.image-meta h4 {
+  margin: 0;
+}
+
+.actions {
+  display: flex;
+  gap: 0.35rem;
+  margin-top: 0.45rem;
+}
+
+@media (max-width: 992px) {
+  .image-grid {
+    grid-template-columns: 1fr;
+  }
+  .section-head {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
