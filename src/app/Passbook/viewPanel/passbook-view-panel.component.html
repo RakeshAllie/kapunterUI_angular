@@ -6,22 +6,38 @@
   </div>
 
   <div class="passbook-list" *ngIf="isListPassbookHistory">
-    <div class="card rounded-3 siteColor passbook-card" *ngFor="let passbook of passbooks">
-      <div class="card-body">
-        <div class="row col-12 cursorPointer" (click)="PassbookHistoryById(passbook.passbookHistoryId)">
-          <div class="col-lg-9 col-8 passbook-left">
-            <img class="siteImageSize rounded-circle" src="{{this.sitePath}}{{passbook.documentDetailId}}.{{passbook.fileExtenstion}}">
-            <div class="passbook-meta">
-              <p class="activityClass text-uppercase">{{passbook.activityDescription}}</p>
-              <p class="siteUrl">{{passbook.siteURL}}</p>
-              <p class="siteUserName">{{passbook.siteUserName}}</p>
-              <p class="createdOn">{{passbook.createdDate}}</p>
-            </div>
+    <div class="passbook-card" *ngFor="let passbook of passbooks" 
+         (click)="PassbookHistoryById(passbook.passbookHistoryId)">
+      <div class="card-inner">
+        <!-- Image Section -->
+        <div class="passbook-image-wrapper">
+          <img class="passbook-image" 
+               [src]="sitePath + passbook.documentDetailId + passbook.fileExtenstion" 
+               [alt]="passbook.siteUserName"
+               onerror="this.src='assets/appicons/placeholder.png'" />
+        </div>
+
+        <!-- Content Section -->
+        <div class="passbook-content">
+          <!-- Activity Info -->
+          <div class="activity-section">
+            <p class="activity-title">{{passbook.activityDescription}}</p>
+            <p class="site-url">{{passbook.siteURL}}</p>
+            <p class="site-username">{{passbook.siteUserName}}</p>
           </div>
-          <div class="col-lg-3 col-4 passbook-right">
-            <p class="coins">{{passbook.displayCoins}}</p>
-            <p class="{{passbook.trxColor}}">{{passbook.trxStatus}}</p>
+
+          <!-- Metadata -->
+          <div class="metadata-section">
+            <span class="created-date">
+              <i class="bi bi-calendar3"></i> {{passbook.createdDate}}
+            </span>
           </div>
+        </div>
+
+        <!-- Right Section -->
+        <div class="passbook-right">
+          <p class="coins-amount">{{passbook.displayCoins}}</p>
+          <p [ngClass]="'status ' + passbook.trxColor">{{passbook.trxStatus}}</p>
         </div>
       </div>
     </div>
@@ -36,9 +52,12 @@
 
     <div class="card card-body card-body-padding detail-site-card">
       <div class="d-flex flex-column text-center col-12">
-        <span>
-          <img class="siteIcon rounded-circle" src="{{this.sitePath}}{{this.passbook?.documentDetailId}}.{{this.passbook?.fileExtenstion}}" />
-        </span>
+    <div class="detail-image-wrapper">
+      <img class="detail-image" 
+           [src]="(sitePath || '') + passbook?.documentDetailId + '.' + passbook?.fileExtenstion" 
+           [alt]="passbook?.siteName"
+           onerror="this.src='assets/appicons/placeholder.png'" />
+    </div>
         <p class="text-uppercase">{{this.passbook?.siteName}}</p>
         <p>{{this.passbook?.siteURL}}</p>
       </div>
@@ -73,7 +92,10 @@
     </div>
 
     <div class="rounded-3 detail-proof" *ngIf="passbook?.proofDocumentDetailID != null">
-      <img src="{{this.proofPath}}{{passbook?.documentDetailId}}.{{passbook?.fileExtenstion}}" class="rounded-3">
+      <img [src]="(proofPath || '') + passbook?.documentDetailId + '.' + passbook?.fileExtenstion" 
+           [alt]="passbook?.siteName + ' Proof'"
+           onerror="this.src='assets/appicons/placeholder.png'"
+           class="rounded-3">
     </div>
   </div>
 </section>

@@ -23,30 +23,31 @@
 
 <div class="card text-white bg-dark mb-12" *ngFor="let bank_detail of Ibank_details">
 
-    <div class="card-header shadow-sm border-0 bg-dark custom_card-header">
-        <p (click)="Make_Admin_QR_Default(bank_detail.qrId)" *ngIf='!bank_detail.isDefault'>
-            <i class="bi bi-patch-plus-fill" title="Make Default"></i>
-        </p>
-        
-        <p class="mb-0 FontSize text-uppercase" *ngIf='bank_detail.isDefault'>
-            <i class="bi bi-patch-check-fill"  title="Default" style="color: green;"></i>
-        </p>
-        
-        <span type="button" aria-expanded="true" data-toggle="collapse" 
-        [attr.data-target]="'#collapse_' + bank_detail.bankAccountDetailID"
-        [attr.aria-controls]="'collapse_'+ bank_detail.bankAccountDetailID">
-            <p>{{ bank_detail.accountDisplayName }} <i class="bi bi-arrow-down-up"> </i></p>
-        </span>
+    <div class="card-header shadow-sm border-0 bg-dark qr-card-header">
+        <div class="header-left">
+            <p (click)="Make_Admin_QR_Default(bank_detail.qrId)" *ngIf='!bank_detail.isDefault' class="icon-btn">
+                <i class="bi bi-patch-plus-fill" title="Make Default"></i>
+            </p>
+            
+            <p class="mb-0 FontSize text-uppercase default-badge" *ngIf='bank_detail.isDefault'>
+                <i class="bi bi-patch-check-fill"  title="Default" style="color: green;"></i>
+            </p>
+            
+            <span class="account-name" data-toggle="collapse" 
+            [attr.data-target]="'#collapse_' + bank_detail.bankAccountDetailID"
+            [attr.aria-controls]="'collapse_'+ bank_detail.bankAccountDetailID">
+                <p>{{ bank_detail.accountDisplayName }} <i class="bi bi-arrow-down-up"></i></p>
+            </span>
+        </div>
 
-        <p (click)="Delete_Admin_QR(bank_detail)">
-            <i class="bi bi-trash3-fill" title="Delete Account"> </i>
+        <p (click)="Delete_Admin_QR(bank_detail)" class="icon-btn delete-btn">
+            <i class="bi bi-trash3-fill" title="Delete Account"></i>
         </p>
      </div>
-    <div class="card-body" style="padding: 1rem;">
-        <div class="card-body sitebackground">
-            <div class="credit rounded-3 mt-2 d-flex justify-content-between align-items-center">
-                <img class="siteheightwidth100" src="{{qrPath}}{{bank_detail.documentDetailId}}.{{bank_detail.fileExtenstion}}" />
-            </div>
+     
+    <div class="card-body qr-card-body">
+        <div class="qr-image-container">
+            <img class="qr-image" [src]="qrPath + bank_detail.documentDetailId + '.' + bank_detail.fileExtenstion" [alt]="bank_detail.accountDisplayName" />
         </div>
     </div>
   </div>

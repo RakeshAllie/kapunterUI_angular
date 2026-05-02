@@ -9,36 +9,17 @@
     </div>
 
     <div class="image-grid">
-      <div class="image-item">
-        <div class="image-preview"></div>
-        <div class="image-meta">
-          <h4>Banner Image 1</h4>
-          <p>Recommended size: 1280 x 520</p>
-          <div class="actions">
-            <button class="btn btn-sm siteBtnbackground">Set Default</button>
-            <button class="btn btn-sm siteBtnbackground">Delete</button>
-          </div>
+      <div class="image-item" *ngFor="let image of listImage_details">
+        <div class="image-preview" [style.background-image]="'url(' + dashboardImagesPath + image.documentDetailId + image.fileExtenstion + ')'"
+             [style.background-size]="'cover'"
+             [style.background-position]="'center'">
         </div>
-      </div>
-      <div class="image-item">
-        <div class="image-preview"></div>
         <div class="image-meta">
-          <h4>Banner Image 2</h4>
-          <p>Recommended size: 1280 x 520</p>
+          <h4>{{ image.imageName }}</h4>
+          <p>{{ image.imageSize || 'Recommended size: 1280 x 520' }}</p>
           <div class="actions">
-            <button class="btn btn-sm siteBtnbackground">Set Default</button>
-            <button class="btn btn-sm siteBtnbackground">Delete</button>
-          </div>
-        </div>
-      </div>
-      <div class="image-item">
-        <div class="image-preview"></div>
-        <div class="image-meta">
-          <h4>Banner Image 3</h4>
-          <p>Recommended size: 1280 x 520</p>
-          <div class="actions">
-            <button class="btn btn-sm siteBtnbackground">Set Default</button>
-            <button class="btn btn-sm siteBtnbackground">Delete</button>
+            <button class="btn btn-sm siteBtnbackground" (click)="setDefault(image.id)">Set Default</button>
+            <button class="btn btn-sm siteBtnbackground" (click)="deleteImage(image.id)">Delete</button>
           </div>
         </div>
       </div>

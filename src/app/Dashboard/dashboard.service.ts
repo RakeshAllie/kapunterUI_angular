@@ -9,6 +9,11 @@ import { apiService } from '../api.service';
   providedIn: 'root'
 })
 export class DashboardService {
+
+  list_Images() {
+    return this.apiservice.GetDashboardImages();
+  }
+  
   bsmodalRef?: BsModalRef;
 
   constructor(private bsModalService:BsModalService,private http: HttpClient, private apiservice: apiService) { }

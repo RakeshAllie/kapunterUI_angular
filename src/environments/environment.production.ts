@@ -3,14 +3,14 @@ export const environment = {
     production: false,
     environment: 'dev',
     isAdminSite: false,
-    appUrl: 'https://www.kapunter.com/',
+    appUrl: 'http://localhost:4200/',
     apiUrl: 'https://localhost:7236',
     ueserKey: 'kapunterUser',
 
     imagePath:{
-        sitePath:'https://www.kapunter.com/assets/Sites/',
-        dashboardImages:'https://www.kapunter.com/assets/DashboardImages/',
-        QR:'https://www.kapunter.com/assets/QR/',
-        proofPath: 'https://www.kapunter.com/assets/paymentProof/'
+        sitePath:'https://kapunterstorage.blob.core.windows.net/kapunterstorage/Sites/',
+        dashboardImages:'https://kapunterstorage.blob.core.windows.net/kapunterstorage/DashboardImages/',
+        QR:'https://kapunterstorage.blob.core.windows.net/kapunterstorage/QR/',
+        proofPath: 'https://kapunterstorage.blob.core.windows.net/kapunterstorage/paymentProof/'
     }
 };

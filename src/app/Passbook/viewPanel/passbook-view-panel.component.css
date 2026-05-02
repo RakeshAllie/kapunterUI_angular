@@ -1,71 +1,409 @@
 .passbook-shell {
-  max-width: 980px;
+  max-width: 1000px;
   margin: 0 auto;
-  padding: 0.6rem 0.4rem 6rem;
+  padding: 1.5rem 0.5rem 6rem;
 }
 
+/* Tab Switch Styling */
 .passbook-switch {
-  margin: 0 0.4rem 0.8rem;
+  margin: 0 0 1.5rem;
+  padding: 0;
 }
 
-.passbook-list .passbook-card {
-  margin: 0.55rem;
-  border: 1px solid rgba(255, 141, 33, 0.35);
+.tabSelection {
+  background: linear-gradient(135deg, rgba(255, 149, 31, 0.1), rgba(255, 149, 31, 0.05));
+  border: 1px solid rgba(255, 149, 31, 0.3);
+  padding: 1rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
 }
 
-.passbook-left {
+.tabSelection:hover {
+  border-color: rgba(255, 149, 31, 0.6);
+  background: linear-gradient(135deg, rgba(255, 149, 31, 0.15), rgba(255, 149, 31, 0.1));
+}
+
+/* List Styling */
+.passbook-list {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr;
+}
+
+.passbook-card {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 149, 31, 0.25);
+  border-radius: 14px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+}
+
+.passbook-card:hover {
+  border-color: rgba(255, 149, 31, 0.6);
+  background: rgba(255, 149, 31, 0.08);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(255, 149, 31, 0.15);
+}
+
+.card-inner {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 1.25rem;
+  padding: 1rem;
 }
 
-.passbook-left .siteImageSize {
-  width: 62px;
-  height: 62px;
+/* Image Section */
+.passbook-image-wrapper {
+  flex-shrink: 0;
+  width: 80px;
+  height: 80px;
+}
+
+.passbook-image {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
-  border: 1px solid rgba(255, 141, 33, 0.6);
+  border-radius: 12px;
+  border: 2px solid rgba(255, 149, 31, 0.3);
 }
 
-.passbook-meta p {
-  margin-top: 0.1rem;
+/* Content Section */
+.passbook-content {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
-.passbook-right {
-  text-align: right;
+.activity-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
 }
 
-.passbook-right .coins {
+.activity-title {
+  margin: 0;
   font-size: 0.95rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.95);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.site-url {
+  margin: 0;
+  font-size: 0.85rem;
+  color: rgba(255, 149, 31, 0.8);
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.site-username {
+  margin: 0;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.6);
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.metadata-section {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.created-date {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+/* Right Section */
+.passbook-right {
+  flex-shrink: 0;
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.coins-amount {
+  margin: 0;
+  font-size: 1.15rem;
   font-weight: 700;
+  color: rgba(255, 149, 31, 0.9);
 }
 
+.status {
+  margin: 0;
+  font-size: 0.75rem;
+  padding: 0.35rem 0.65rem;
+  border-radius: 6px;
+  font-weight: 600;
+  text-transform: uppercase;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* Detail View */
 .detail-back-btn {
-  margin-bottom: 0.65rem;
+  margin-bottom: 1rem;
   cursor: pointer;
+  padding: 1rem;
+  border-radius: 12px;
+  background: rgba(255, 149, 31, 0.1);
+  border: 1px solid rgba(255, 149, 31, 0.3);
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 600;
 }
 
-.detail-site-card,
-.detail-desc-card,
+.detail-back-btn:hover {
+  background: rgba(255, 149, 31, 0.2);
+  border-color: rgba(255, 149, 31, 0.6);
+}
+
+.detail-back-btn i {
+  font-size: 1.2rem;
+}
+
+.detail-image-wrapper {
+  width: 120px;
+  height: 120px;
+  margin: 1.5rem auto;
+}
+
+.detail-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+  border: 2px solid rgba(255, 149, 31, 0.3);
+}
+
+.detail-site-card {
+  background: rgba(255, 149, 31, 0.05);
+  border: 1px solid rgba(255, 149, 31, 0.2);
+  border-radius: 12px;
+  margin-bottom: 1rem;
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.detail-site-card p:first-of-type {
+  font-size: 1.15rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin: 1rem 0 0.5rem;
+}
+
+.detail-site-card p:last-of-type {
+  font-size: 0.9rem;
+  color: rgba(255, 149, 31, 0.8);
+  margin: 0;
+}
+
+.detail-desc-card {
+  background: rgba(255, 149, 31, 0.05);
+  border: 1px solid rgba(255, 149, 31, 0.2);
+  border-radius: 12px;
+  margin-bottom: 1rem;
+  padding: 1.5rem;
+}
+
+.detail-desc-card .card-body {
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
 .detail-grid-card {
-  margin-bottom: 0.65rem;
+  background: rgba(255, 149, 31, 0.05);
+  border: 1px solid rgba(255, 149, 31, 0.2);
+  border-radius: 12px;
+  margin-bottom: 1rem;
+  padding: 1.5rem;
 }
 
 .detail-title {
-  margin-bottom: 0.4rem;
+  margin-bottom: 1rem;
   font-weight: 700;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  color: rgba(255, 149, 31, 0.9);
+}
+
+.nav-item-divider {
+  height: 1px;
+  background: linear-gradient(90deg, rgba(255, 149, 31, 0.2), transparent);
+  margin-bottom: 1rem;
 }
 
 .detail-row {
-  margin-bottom: 0.2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid rgba(255, 149, 31, 0.1);
+}
+
+.detail-row:last-child {
+  border-bottom: none;
+}
+
+.detail-row p {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.detail-row .col-6:first-child p {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.detail-row .col-6:last-child p {
+  color: rgba(255, 149, 31, 0.9);
+  font-weight: 600;
+}
+
+.detail-proof {
+  border-radius: 12px;
+  border: 2px solid rgba(255, 149, 31, 0.3);
+  overflow: hidden;
+  margin-top: 1.5rem;
 }
 
 .detail-proof img {
-  width: min(100%, 320px);
+  width: 100%;
+  height: auto;
+  display: block;
+  max-height: 400px;
+  object-fit: cover;
 }
 
+/* Responsive Design */
 @media (max-width: 768px) {
-  .passbook-left .siteImageSize {
-    width: 48px;
-    height: 48px;
+  .passbook-shell {
+    padding: 1rem 0.5rem 4rem;
+  }
+
+  .card-inner {
+    gap: 0.75rem;
+    padding: 0.85rem;
+  }
+
+  .passbook-image-wrapper {
+    width: 70px;
+    height: 70px;
+  }
+
+  .activity-title {
+    font-size: 0.9rem;
+  }
+
+  .site-url {
+    font-size: 0.8rem;
+  }
+
+  .coins-amount {
+    font-size: 1rem;
+  }
+
+  .detail-image-wrapper {
+    width: 100px;
+    height: 100px;
+  }
+}
+
+@media (max-width: 576px) {
+  .passbook-shell {
+    padding: 0.75rem 0 3rem;
+  }
+
+  .card-inner {
+    gap: 0.6rem;
+    padding: 0.75rem;
+    flex-wrap: wrap;
+  }
+
+  .passbook-image-wrapper {
+    width: 60px;
+    height: 60px;
+    order: 1;
+  }
+
+  .passbook-content {
+    order: 2;
+    flex: 1 1 100%;
+  }
+
+  .passbook-right {
+    order: 3;
+    flex: 1 1 100%;
+    text-align: left;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .activity-title {
+    font-size: 0.85rem;
+  }
+
+  .site-url {
+    font-size: 0.75rem;
+  }
+
+  .site-username {
+    font-size: 0.75rem;
+  }
+
+  .coins-amount {
+    font-size: 0.95rem;
+  }
+
+  .status {
+    font-size: 0.7rem;
+    padding: 0.3rem 0.5rem;
+  }
+
+  .detail-site-card {
+    padding: 1rem;
+  }
+
+  .detail-grid-card {
+    padding: 1rem;
+  }
+
+  .detail-row {
+    padding: 0.6rem 0;
+    flex-wrap: wrap;
+  }
+
+  .detail-row .col-6 {
+    flex: 0 0 50%;
+  }
+}
+
+@media (max-width: 360px) {
+  .passbook-image-wrapper {
+    width: 50px;
+    height: 50px;
+  }
+
+  .activity-title {
+    font-size: 0.8rem;
+  }
+
+  .coins-amount {
+    font-size: 0.9rem;
   }
 }

@@ -5,12 +5,13 @@ import { DashboardService } from './dashboard.service';
 import { HttpClientModule } from '@angular/common/http';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { DashboardRoutingModule } from './dashboard-routing.module';
+import { ListImagesComponent } from './ListImages/list-images.component';
 
 
 
 @NgModule({
   declarations: [
-    
+    ListImagesComponent
   ],
   imports: [
     CommonModule,
