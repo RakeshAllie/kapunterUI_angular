@@ -3,8 +3,8 @@ export const environment = {
     production: false,
     environment: 'dev',
     isAdminSite: false,
-    appUrl: 'http://localhost:4200/',
-    apiUrl: 'https://localhost:7236',
+    appUrl: 'http://20.83.48.124:81/',
+    apiUrl: 'https://kapunterapi.azurewebsites.net',
     ueserKey: 'kapunterUser',
 
     imagePath:{

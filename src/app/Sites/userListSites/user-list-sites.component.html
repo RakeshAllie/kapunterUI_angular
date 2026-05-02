@@ -7,7 +7,7 @@
   <div class="site-list-card" *ngFor="let site of sites">
     <div class="site-list-left">
       <div class="site-logo-wrap">
-        <img class="siteImageSize rounded-circle" src="{{sitePath}}{{site.documentDetailId}}.{{site.fileExtenstion}}" alt="{{ site.siteName }}" />
+        <img class="siteImageSize rounded-circle" src="{{sitePath}}{{site.documentDetailId}}{{site.fileExtenstion}}" alt="{{ site.siteName }}" />
       </div>
       <div class="site-meta">
         <h4 class="text-uppercase">{{ site.siteName }}</h4>

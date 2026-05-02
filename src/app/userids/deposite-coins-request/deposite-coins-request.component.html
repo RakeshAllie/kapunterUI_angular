@@ -57,7 +57,7 @@
         <div *ngIf="paymentModeTypesDetailListView">
             <div *ngIf="QRCodeDetail">
                 <div class="d-flex flex-column text-center col-12">
-                    <img class="siteheightwidth100" src="{{qrPath}}{{adminBankDetail.documentDetailId}}.{{adminBankDetail.fileExtenstion}}" />
+                    <img class="siteheightwidth100" src="{{qrPath}}{{adminBankDetail.documentDetailId}}{{adminBankDetail.fileExtenstion}}" />
                 </div>
             </div>
             <div *ngIf="BankTrDetail" class="nav-item-divider"></div>
