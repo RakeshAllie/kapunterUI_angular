@@ -39,7 +39,7 @@ export class FooterComponent {
 
   listIds(){
     if(this.authservice.isbenview()){
-      this.router.navigate(["/userids/user-list-sites"]);
+      this.router.navigate(["/site/user-list-sites"]);
     }else{
       this.toasterService.warning('Login to perform action!!');
     }
