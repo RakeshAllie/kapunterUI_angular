@@ -8,11 +8,11 @@
     <div class="profile-grid">
       <div class="profile-item">
         <span>Mobile Number</span>
-        <strong>**********</strong>
+        <strong>{{ authService.userdetail.userNumber || '—' }}</strong>
       </div>
       <div class="profile-item">
         <span>Wallet Balance</span>
-        <strong><i class="bi bi-currency-rupee"></i> 0</strong>
+        <strong><i class="bi bi-currency-rupee"></i> {{ authService.userdetail.coins || 0 }}</strong>
       </div>
       <div class="profile-item">
         <span>Account Status</span>

@@ -20,7 +20,7 @@ export class apiService {
     return this.http.get(`${obj}`);
     }
   
-  login(obj: login){
+  login(obj: login | { userNumber: string; otp: string; password: string }){
      return this.http.post(`${environment.apiUrl}/api/LoginSignup/Login_GetToken`, obj);
   }
 
@@ -135,6 +135,10 @@ export class apiService {
 
   ListIDCloseRequest(obj: any){
     return this.http.post(`${environment.apiUrl}/api/Account/ListIDCloseRequest`,obj);
+  }
+
+  RejectedRequestList(obj: any){
+    return this.http.post(`${environment.apiUrl}/api/Account/RejectedRequestList`, obj);
   }
 
   AddChangeIDPassword(obj: any){

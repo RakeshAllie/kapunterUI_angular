@@ -10,9 +10,7 @@ import { Router } from '@angular/router';
 })
 export class NavbarComponent {
 
-  constructor(private accountService: AccountsService, public authservice: AuthService, private router: Router){
-    console.log('asad'+authservice.isLoggenIn);
-  }
+  constructor(private accountService: AccountsService, public authservice: AuthService, private router: Router) {}
 
   loginPopup() {
       this.accountService.OpenLoginPopup(true, 'Login');
@@ -20,5 +18,9 @@ export class NavbarComponent {
 
   goToMyAccount() {
     this.router.navigate(['/account/profile-details']);
+  }
+
+  logout(): void {
+    this.authservice.logout();
   }
 }

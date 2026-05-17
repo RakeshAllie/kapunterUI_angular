@@ -1,18 +1,21 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ISiteDetailModal } from 'src/app/Shared/Modals/site-detail-modal';
 import { SitesService } from '../../Sites/sites.service';
 import { ToastrService } from 'src/app/toastr/toastr.service';
-import { DeleteService } from 'src/app/Shared/Modules/delete-module/delete.service';
 import { environment } from 'src/environments/environment.development';
 import { AuthService } from 'src/app/auth.service';
 import { UserIdsService } from 'src/app/userids/user-ids.service';
+import { CoinsService } from 'src/app/admincoinsaction/coins/coins.service';
+import { BsModalService, ModalOptions } from 'ngx-bootstrap/modal';
+import { TransferIdsListModalComponent } from './transfer-ids-list-modal/transfer-ids-list-modal.component';
+import { SiteIdDetailsModalComponent } from './site-id-details-modal/site-id-details-modal.component';
 
 @Component({
   selector: 'app-user-list-sites',
   templateUrl: './user-list-sites.component.html',
   styleUrls: ['./user-list-sites.component.css']
 })
-export class UserListSitesComponent {
+export class UserListSitesComponent implements OnInit {
 
   sites: ISiteDetailModal[] | undefined;
   sitePath: string | undefined;
@@ -22,7 +25,8 @@ export class UserListSitesComponent {
   
   constructor(private siteService:SitesService, 
     private toasterService: ToastrService, private userIdService: UserIdsService
-    , private authservice: AuthService){
+    , public authservice: AuthService, private coinsservice: CoinsService
+    , private bsModalService: BsModalService){
     this.sitePath = environment.imagePath.sitePath;
     this._sessionUser = this.authservice.user.userId;
   }
@@ -47,6 +51,38 @@ export class UserListSitesComponent {
 
   CreateIDRequest(obj: any){
     this.userIdService.OpenAddIDRequestPopup(obj);
+  }
+
+  openWithdrawCoinsRequest(): void {
+    this.coinsservice.OpenWithdrawCoinsRequestPopup('Withdraw');
+  }
+
+  openDepositeCoinsRequest(): void {
+    this.coinsservice.OpenDepositeCoinsRequestPopup('Deposite');
+  }
+
+  openTransferIdsList(site: ISiteDetailModal): void {
+    const initialState: ModalOptions = {
+      initialState: { contextSite: site },
+    };
+    this.bsModalService.show(TransferIdsListModalComponent, initialState);
+  }
+
+  openSiteIdDetails(site: ISiteDetailModal): void {
+    const initialState: ModalOptions = {
+      initialState: { contextSite: site },
+    };
+    this.bsModalService.show(SiteIdDetailsModalComponent, initialState);
+  }
+
+  openSiteLink(site: ISiteDetailModal): void {
+    const raw = (site.siteURL || '').trim();
+    if (!raw) {
+      this.toasterService.warning('No URL for this site.');
+      return;
+    }
+    const url = /^https?:\/\//i.test(raw) ? raw : `https://${raw}`;
+    window.open(url, '_blank', 'noopener,noreferrer');
   }
 
 }

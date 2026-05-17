@@ -53,6 +53,9 @@ export class DeleteModuleComponent {
       case 'idrequest':
         this.IDRequestDelete();
         break;
+      case 'id':
+        this.IDDelete();
+        break;
       case 'deposittowallet':
         this.DeleteCoinsFromWallet();
         break;

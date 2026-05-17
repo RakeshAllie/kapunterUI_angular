@@ -22,7 +22,7 @@ var accountCoins = 0;
 
 
 
-const mobileScreen = window.matchMedia("(max-width: 990px )");
+const mobileScreen = window.matchMedia("(max-width: 992px)");
 $(document).ready(function () {
     accountCoins = parseInt($('.coinsValidation').attr('data-coins'));
     $(document).on('click',".dashboard-nav-dropdown-toggle",function () {
@@ -34,12 +34,21 @@ $(document).ready(function () {
             .siblings()
             .removeClass("show");
     });
-    $(document).on('click',".menu-toggle",function () {
+    $(document).on('click',".menu-toggle",function (e) {
+        e.stopPropagation();
         if (mobileScreen.matches) {
             $(".dashboard-nav").toggleClass("mobile-show");
+            $("body").toggleClass("sidebar-drawer-open", $(".dashboard-nav").hasClass("mobile-show"));
         } else {
             $(".dashboard").toggleClass("dashboard-compact");
         }
+    });
+
+    $(document).on("click", ".Burger-Menu-Close-btn", function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        $(".dashboard-nav").removeClass("mobile-show");
+        $("body").removeClass("sidebar-drawer-open");
     });
 });
 
@@ -56,13 +65,11 @@ $(document).on('click', '.CopyToClipboard', function () {
 $(document).click(function (e) {
 
     var container2 = $(".menu-toggle");
-    if (container2.is(e.target) && container2.has(e.target).length > 0) {
-        $(".dashboard-nav").addClass("mobile-show");
-    }
     var container = $(".dashboard-nav");
     if (!container2.is(e.target) && container2.has(e.target).length === 0 && !container.is(e.target) && container.has(e.target).length === 0) {
         if (container.hasClass('mobile-show')) {
             $(".dashboard-nav").removeClass("mobile-show");
+            $("body").removeClass("sidebar-drawer-open");
         }
     }
 
@@ -71,6 +78,7 @@ $(document).click(function (e) {
         if (!$(this).hasClass('dashboard-nav-dropdown-toggle')) {
             if (container.hasClass('mobile-show')) {
                 $(".dashboard-nav").removeClass("mobile-show");
+                $("body").removeClass("sidebar-drawer-open");
             }
         }
     });

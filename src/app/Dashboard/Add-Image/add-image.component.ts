@@ -16,7 +16,8 @@ export class AddImageComponent {
     title: string | undefined;
     AddImageForm: FormGroup;
     submitted : boolean = false;
-    file: any = null;
+    file: File | null = null;
+    selectedFileName: string | null = null;
     isupdate: boolean = false;
     returnType: any;
 
@@ -30,8 +31,11 @@ export class AddImageComponent {
        )
     }
 
-    processFile(imageInput: any) {
-      this.file = imageInput.files[0];
+    processFile(imageInput: HTMLInputElement) {
+      const f = imageInput.files?.[0];
+      this.file = f ?? null;
+      this.selectedFileName = f?.name ?? null;
+      this.AddImageForm.patchValue({ files: f ? f.name : '' });
     }
 
     AddDashboardImage(){

@@ -18,7 +18,8 @@ export class AdminWithdrawCoinsByRequestIdComponent {
 
    WithdrawCoinsByRequestIDFrom: FormGroup;
    submitted : boolean = false;
-   file: any = null;
+   file: File | null = null;
+   selectedFileName: string | null = null;
    isupdate: boolean = false;
    withdrawobj: Iadmin_withdraw_coins_by_request_id 
    = new admin_withdraw_coins_by_request_id();
@@ -27,8 +28,10 @@ export class AdminWithdrawCoinsByRequestIdComponent {
   
    @ViewChild('imageInput') fileInput: any
 
-  processFile(imageInput: any) {
-    this.file = imageInput.files[0];
+  processFile(imageInput: HTMLInputElement) {
+    const f = imageInput.files?.[0];
+    this.file = f ?? null;
+    this.selectedFileName = f?.name ?? null;
   }
 
   constructor(public bsModalRef:BsModalRef, private formBuilder:FormBuilder, 

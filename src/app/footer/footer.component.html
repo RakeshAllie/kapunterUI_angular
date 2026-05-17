@@ -1,7 +1,7 @@
 
-<div class="card mt-4 footer-nav footernavbar sitebackground cursorPointer footer-shell">
-    <div class="row col-12" *ngIf="this.authservice.isbenview()">
-        <div class="col-3 grid-margin stretch-card" (click)="RedirectToHome()">
+<div class="card mt-0 footer-nav footernavbar sitebackground cursorPointer footer-shell">
+    <div class="footer-tab-row" *ngIf="this.authservice.isbenview()">
+        <div class="footer-tab-cell" (click)="RedirectToHome()">
                 <div class="card sitebackground footer-tab active-tab">
                     <div class="card-body text-center">
                         <div class="row">
@@ -13,7 +13,7 @@
                     </div>
                 </div>
         </div>
-        <div class="col-3 grid-margin stretch-card" (click)="createId()">
+        <div class="footer-tab-cell" (click)="createId()">
             <div class="card sitebackground footer-tab">
                 <div class="card-body text-center">
                     <div class="row">
@@ -25,11 +25,11 @@
                 </div>
             </div>
         </div>
-        <div class="col-3 grid-margin stretch-card" (click)="listIds()">
+        <div class="footer-tab-cell" (click)="listIds()">
             <div class="card sitebackground footer-tab">
                 <div class="card-body text-center">
                     <div class="row">
-                        <i class="bi bi-app"></i>
+                        <i class="bi bi-square"></i>
                     </div>
                     <h6 class="text-muted font-weight-normal">
                         <p class="text-uppercase"> IDs </p>
@@ -37,11 +37,11 @@
                 </div>
             </div>
         </div>
-        <div class="col-3 grid-margin stretch-card" (click)="viewPassbook()">
+        <div class="footer-tab-cell" (click)="viewPassbook()">
             <div class="card sitebackground footer-tab">
                 <div class="card-body text-center">
                     <div class="row">
-                        <i class="bi bi-pass"></i>
+                        <i class="bi bi-journal-text"></i>
                     </div>
                     <h6 class="text-muted font-weight-normal">
                         <p class="text-uppercase"> Passbook </p>
@@ -51,8 +51,8 @@
         </div>
     </div>
 
-    <div class="row col-12" *ngIf="this.authservice.isadminview()">
-        <div class="col-3 grid-margin stretch-card" (click)="RedirectToHome()">
+    <div class="footer-tab-row" *ngIf="this.authservice.isadminview()">
+        <div class="footer-tab-cell" (click)="RedirectToHome()">
                 <div class="card sitebackground footer-tab active-tab">
                     <div class="card-body text-center">
                         <div class="row">
@@ -64,7 +64,7 @@
                     </div>
                 </div>
         </div> 
-        <div class="col-3 grid-margin stretch-card" (click)="AddSitesPopup()">
+        <div class="footer-tab-cell" (click)="AddSitesPopup()">
             <div class="card sitebackground footer-tab">
                 <div class="card-body text-center">
                     <div class="row">
@@ -76,11 +76,11 @@
                 </div>
             </div>
         </div>
-        <div class="col-3 grid-margin stretch-card" routerLink="/site/list-sites">
+        <div class="footer-tab-cell" routerLink="/site/list-sites">
             <div class="card sitebackground footer-tab">
                 <div class="card-body text-center">
                     <div class="row">
-                        <i class="bi bi-app"></i>
+                        <i class="bi bi-square"></i>
                     </div>
                     <h6 class="text-muted font-weight-normal">
                         <p class="text-uppercase"> Sites </p>
@@ -88,11 +88,11 @@
                 </div>
             </div>
         </div>
-        <div class="col-3 grid-margin stretch-card" routerLink="/adminaction/user_list">
+        <div class="footer-tab-cell" routerLink="/adminaction/user_list">
             <div class="card sitebackground footer-tab">
                 <div class="card-body text-center">
                     <div class="row">
-                        <i class="bi bi-pass"></i>
+                        <i class="bi bi-person-vcard"></i>
                     </div>
                     <h6 class="text-muted font-weight-normal">
                         <p class="text-uppercase"> Users </p>

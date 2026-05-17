@@ -27,7 +27,7 @@ export class IdsListComponent {
   }
 
   fetchIdList(paginationQuery: any){
-    this.idsService.listIdRequests(paginationQuery).subscribe({
+    this.idsService.listIds(paginationQuery).subscribe({
       next:(response) =>{
        this.returnType = response;
        this.idRequestList = this.returnType['returnList'];

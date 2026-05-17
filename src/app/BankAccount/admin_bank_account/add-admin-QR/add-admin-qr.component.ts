@@ -18,7 +18,8 @@ export class AddAdminQRComponent {
   addAdminQrForm: FormGroup;
   add_admin_qr: Iadd_admin_bank_account = new add_admin_bank_account();
   returnType: any;
-  file: any = null;
+  file: File | null = null;
+  selectedFileName: string | null = null;
   isupdate: boolean = false;
 
   constructor(public bsModalRef:BsModalRef, private formBuilder:FormBuilder, 
@@ -33,16 +34,18 @@ export class AddAdminQRComponent {
 
     @ViewChild('imageInput') fileInput: any
 
-  processFile(imageInput: any) {
-    this.file = imageInput.files[0];
+  processFile(imageInput: HTMLInputElement) {
+    const f = imageInput.files?.[0];
+    this.file = f ?? null;
+    this.selectedFileName = f?.name ?? null;
   }
   
     AddAdminQR() {
       this.submitted = true;
 
-      if(this.addAdminQrForm.invalid) {
+      if (this.addAdminQrForm.invalid || !this.file) {
         return;
-      } 
+      }
 
       let formParams = new FormData();
       formParams.append('File', this.file);

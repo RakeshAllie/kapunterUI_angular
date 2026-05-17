@@ -16,7 +16,10 @@
             <img src="../../assets/kapunter-logo.jpeg" alt="Logo" />
             <div class="wallet-balance-tile">
               <p class="wallet-balance-label">Balance</p>
-              <h2><i class="bi bi-currency-rupee"></i> {{ this.authservice.userdetail.coins || 0 }}</h2>
+              <div class="wallet-balance-amount-row">
+                <i class="bi bi-currency-rupee" aria-hidden="true"></i>
+                <span class="wallet-balance-value">{{ this.authservice.userdetail.coins || 0 }}</span>
+              </div>
             </div>
           </div>
           <div class="Wallet-With-Comp" *ngIf="(authservice.isLoggenIn | async) && this.authservice.isbenview()" (click)="WithdrawFromWallet()">
@@ -29,13 +32,14 @@
           </div>
         </div>
       </div>
-      <h1>Kapunter 5-in-1 Wallet</h1>
+     <!--  <h1>Kapunter 5-in-1 Wallet</h1>
       <p class="hero-caption">Fast • Secure • Easy</p>
 
       <div class="hero-actions">
         <button class="hero-btn hero-btn-primary" type="button" (click)="DepositeToWallet()">Get Started</button>
-        <button class="hero-btn hero-btn-secondary" type="button" (click)="ActionToastr()">Login</button>
-      </div>
+        <button *ngIf="!(authservice.isLoggenIn | async)" class="hero-btn hero-btn-secondary" type="button" (click)="openLogin()">Login</button>
+        <button *ngIf="(authservice.isLoggenIn | async)" class="hero-btn hero-btn-secondary" type="button" (click)="logout()">Logout</button>
+      </div> -->
     </div>
   </div>
   <div id="DashboardImageSlides" class="carousel slide home-carousel" data-bs-ride="carousel" *ngIf="images.length > 0">

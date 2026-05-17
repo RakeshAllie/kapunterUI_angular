@@ -4,6 +4,32 @@
   box-shadow: 0 -8px 20px rgba(0, 0, 0, 0.3);
 }
 
+.footer-tab-row {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: stretch;
+  width: 100%;
+  margin: 0;
+  padding: 0.35rem 0.2rem calc(0.4rem + env(safe-area-inset-bottom, 0px));
+  gap: 0.12rem;
+  box-sizing: border-box;
+}
+
+.footer-tab-cell {
+  flex: 1 1 0;
+  min-width: 0;
+  max-width: 25%;
+}
+
+.footer-tab-cell .card {
+  margin: 0;
+  height: 100%;
+}
+
+.footer-tab .card-body {
+  padding: 0.42rem 0.15rem !important;
+}
+
 .footer-tab {
   border-radius: 14px;
   margin: 0.2rem;
@@ -31,4 +57,18 @@
   color: #ffe7cf;
   font-weight: 700;
   font-size: 0.66rem;
+  line-height: 1.15;
+  margin: 0;
+  padding: 0 1px;
+}
+
+@media (max-width: 380px) {
+  .footer-tab p {
+    font-size: 0.58rem;
+    letter-spacing: -0.02em;
+  }
+
+  .footer-tab i {
+    font-size: 1rem;
+  }
 }

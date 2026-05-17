@@ -34,7 +34,7 @@ export class MakeDefaultModuleComponent {
         this.make_admin_upi_default();
         break;
       case 'adminqr':
-        this.make_admin_upi_default();
+        this.make_admin_qr_default();
         break;
       case 'userbank':
         this.make_user_bank_account_default();

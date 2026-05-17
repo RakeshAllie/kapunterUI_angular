@@ -6,6 +6,7 @@ import { CoinsService } from '../admincoinsaction/coins/coins.service';
 import { AuthService } from '../auth.service';
 import { ToastrService } from '../toastr/toastr.service';
 import { UserService } from '../admincoinsaction/User/user.service';
+import { AccountsService } from '../Accounts/accounts.service';
 
 @Component({
   selector: 'app-home',
@@ -20,7 +21,7 @@ export class HomeComponent implements OnInit {
 
   constructor(private homeService:HomeService, private coinsservice: CoinsService
     , public authservice: AuthService, private toasterService: ToastrService
-    , public userservice: UserService){
+    , public userservice: UserService, private accountService: AccountsService){
     this.imgPath = environment.imagePath.dashboardImages;
   }
   ngOnInit(): void {
@@ -44,6 +45,14 @@ export class HomeComponent implements OnInit {
 
   ActionToastr(){
     this.toasterService.warning('Action not allowed!!!');
+  }
+
+  openLogin(): void {
+    this.accountService.OpenLoginPopup(true, 'Login');
+  }
+
+  logout(): void {
+    this.authservice.logout();
   }
 
 }

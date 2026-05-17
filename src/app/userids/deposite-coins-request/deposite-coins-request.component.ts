@@ -6,6 +6,7 @@ import { CoinsService } from '../../admincoinsaction/coins/coins.service';
 import { ToastrService } from 'src/app/toastr/toastr.service';
 import { AuthService } from 'src/app/auth.service';
 import { Ibank_details, bank_details } from 'src/app/Shared/Modals/BankAccount/bank_details';
+import { environment } from 'src/environments/environment.production';
 
 @Component({
   selector: 'app-deposite-coins-request',
@@ -16,7 +17,8 @@ export class DepositeCoinsRequestComponent {
 
   depositeCoinRequestFrom: FormGroup;
    submitted : boolean = false;
-   file: any = null;
+   file: File | null = null;
+   selectedFileName: string | null = null;
    returnType: any;
    private readonly _sessionUser: bigint;
    adminBankDetail: Ibank_details = new bank_details();
@@ -40,10 +42,13 @@ export class DepositeCoinsRequestComponent {
        },
      )
      this._sessionUser = this.authservice.user.userId;
+     this.qrPath = environment.imagePath.QR;
   }
 
-  processFile(imageInput: any) {
-    this.file = imageInput.files[0];
+  processFile(imageInput: HTMLInputElement) {
+    const f = imageInput.files?.[0];
+    this.file = f ?? null;
+    this.selectedFileName = f?.name ?? null;
   }
 
   backToAddCoins(){
@@ -110,6 +115,7 @@ export class DepositeCoinsRequestComponent {
       next:(response) => {
         this.returnType = response;
         this.adminBankDetail = this.returnType['returnVal'];
+        console.log(this.adminBankDetail);
       },
       error: error =>{
         console.log(error);

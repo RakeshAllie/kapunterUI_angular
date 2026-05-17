@@ -14,15 +14,18 @@ import { ISiteDetailModal, SiteDetailModal } from 'src/app/Shared/Modals/site-de
 export class AddSiteComponent implements OnInit {
    AddSiteFrom: FormGroup;
    submitted : boolean = false;
-   file: any = null;
+   file: File | null = null;
+   selectedFileName: string | null = null;
    isupdate: boolean = false;
    site: ISiteDetailModal = new SiteDetailModal();
    returnType: any;
   
    @ViewChild('imageInput') fileInput: any
 
-  processFile(imageInput: any) {
-    this.file = imageInput.files[0];
+  processFile(imageInput: HTMLInputElement) {
+    const f = imageInput.files?.[0];
+    this.file = f ?? null;
+    this.selectedFileName = f?.name ?? null;
   }
 
   constructor(public bsModalRef:BsModalRef, private formBuilder:FormBuilder, 

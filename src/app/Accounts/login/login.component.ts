@@ -135,16 +135,62 @@ export class LoginComponent{
     return;
   }
 
-  let login: login = Object.create(null);
-  login.UserNumber = this.SendOtpForm.value["userNumber"].toString();
-  login.OTP = this.LoginForm.value['otp'];
-  login.Password = this.LoginForm.value['password'];
+  let loginPayload: login = Object.create(null);
+  loginPayload.UserNumber = this.SendOtpForm.value["userNumber"].toString();
 
-  this.authservice.login(login)?.subscribe({
-    next:(response)=>{
-      this.bsModalRef.hide();
-    }}
-  );
+  if (this.showPassword) {
+    loginPayload.Password = this.LoginForm.value['password'] ?? '';
+    loginPayload.OTP = '';
+  } else {
+    loginPayload.OTP = this.LoginForm.value['otp'] ?? '';
+    loginPayload.Password = '';
+  }
+
+  this.authservice.logLoginDebug('LoginComponent — request', {
+    userNumber: loginPayload.UserNumber,
+    otp: loginPayload.OTP,
+    hasPassword: !!loginPayload.Password,
+    logintype: this.logintype,
+    showPassword: this.showPassword,
+    formValid: this.LoginForm.valid,
+  });
+
+  this.authservice.login(loginPayload)?.subscribe({
+    next: (response) => {
+      this.authservice.logLoginDebug('LoginComponent — subscribe next', {
+        apiResponse: response,
+        apiSuccess: this.authservice.isLoginApiSuccess(response),
+        isLoggedIn: this.authservice.isLoggedIn,
+        token: this.authservice.token,
+        parsedUser: this.authservice.user,
+        lastLoginDebug: this.authservice.lastLoginDebug,
+      });
+
+      if (this.authservice.isLoggedIn) {
+        this.bsModalRef.hide();
+        return;
+      }
+
+      console.error(
+        '[Kapunter Login Debug] Login API returned but session was not created.',
+        'Open DevTools → Application → Local Storage → bearer_token',
+        'Inspect authservice.lastLoginDebug:',
+        this.authservice.lastLoginDebug
+      );
+      this.toasterService.warning(this.authservice.getLoginApiMessage(response));
+    },
+    error: (err) => {
+      this.authservice.logLoginDebug('LoginComponent — subscribe error', {
+        status: err?.status,
+        statusText: err?.statusText,
+        message: err?.message,
+        url: err?.url,
+        errorBody: err?.error,
+      });
+      console.error('[Kapunter Login Debug] HTTP login error:', err);
+      this.toasterService.warning('Login failed. Please try again. (see browser console for debug)');
+    }
+  });
  }
 
  backToMobileNumber(){
